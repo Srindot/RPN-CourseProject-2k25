@@ -101,6 +101,13 @@ To get pointclouds from the RGBD images:
 - For Docker-related questions or issues, feel free to open an issue on the [DockerForROS2Development](https://github.com/soham2560/DockerForROS2Development.git)
 
 
+### For Arch users :(
+
+``` bash
+echo "127.0.0.1 stimpy" | sudo tee -a /etc/hosts
+
+```
+
 ### Credits
 
 - This Docker setup was adapted from [Soham's repository](https://github.com/soham2560/DockerForROS2Development.git).
