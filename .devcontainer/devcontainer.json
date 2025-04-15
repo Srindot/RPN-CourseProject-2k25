@@ -39,7 +39,14 @@
                 "twxs.cmake",
                 "yzhang.markdown-all-in-one",
                 "zachflower.uncrustify",
-                "akhail.save-typing"
+                "akhail.save-typing",
+                "esbenp.prettier-vscode",
+                "eamodio.gitlens",
+                "ms-toolsai.jupyter",
+                "mechatroner.rainbow-csv",
+                "ms-vscode.cmake-tools",
+                "ms-python.vscode-pylance"
+
             ]
         }
     },

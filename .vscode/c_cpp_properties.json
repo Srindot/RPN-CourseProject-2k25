@@ -1,0 +1,44 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/container_user/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/robot_nav_tools/color_util/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/costmap_queue/include/**",
+        "/home/container_user/catkin_ws/src/depthimage_to_laserscan/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/dlux_global_planner/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/dlux_plugins/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/dwb_critics/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/dwb_local_planner/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/dwb_plugins/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/global_planner_tests/include/**",
+        "/home/container_user/catkin_ws/src/laser_filters/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/locomotor/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/locomove_base/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_2d_utils/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_core2/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_core_adapter/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_grid/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_grid_iterators/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_grid_pub_sub/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/nav_grid_server/include/**",
+        "/home/container_user/catkin_ws/src/pointcloud_to_laserscan/include/**",
+        "/home/container_user/catkin_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/robot_nav_tools/robot_nav_rviz_plugins/include/**",
+        "/home/container_user/catkin_ws/src/robot_navigation/robot_nav_tools/robot_nav_viz_demos/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
