@@ -1,0 +1,8 @@
+<launch>
+  <!-- Define map file location -->
+  <arg name="map_file" default="$(find turtlebot3_navigation)/maps/rrc_lab.yaml"/>
+
+  <!-- Map Server Node -->
+  <node pkg="map_server" name="map_server" type="map_server"
+        args="$(arg map_file)" output="screen"/>
+</launch>

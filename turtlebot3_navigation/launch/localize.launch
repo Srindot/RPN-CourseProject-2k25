@@ -1,0 +1,49 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find turtlebot3_navigation)/maps/rrc_lab.yaml"/>
+  <arg name="open_rviz" default="true"/>
+
+  <!-- TurtleBot3 Bringup (Robot Setup) -->
+  <include file="$(find turtlebot3_navigation)/launch/bringup.launch" />
+
+  <!-- Map Server -->
+  <node pkg="map_server" name="map_server" type="map_server"
+        args="$(arg map_file)" output="screen"/>
+
+  <!-- AMCL (Localization) -->
+  <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>
+
+  <!-- Static Transform Publishers for Missing Frames -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_base_link"
+        args="0 0 0 0 0 0 map base_link 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+        args="0 0 0 0 0 0 base_link laser 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_center_hubcap"
+        args="0 0 0 0 0 0 base_link center_hubcap 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_center_wheel"
+        args="0 0 0 0 0 0 base_link center_wheel 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_left_hubcap"
+        args="0 0 0 0 0 0 base_link p3dx_left_hubcap 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_left_wheel"
+        args="0 0 0 0 0 0 base_link p3dx_left_wheel 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_right_hubcap"
+        args="0 0 0 0 0 0 base_link p3dx_right_hubcap 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_right_wheel"
+        args="0 0 0 0 0 0 base_link p3dx_right_wheel 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_swivel"
+        args="0 0 0 0 0 0 base_link swivel 10"/>
+
+  <!-- RViz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
+  </group>
+</launch>
