@@ -14,8 +14,8 @@
   <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>
 
   <!-- Static Transform Publishers for Missing Frames -->
-  <node pkg="tf" type="static_transform_publisher" name="map_to_base_link"
-        args="0 0 0 0 0 0 map base_link 10"/>
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_base_link"
+        args="0 0 0 0 0 0 map base_link 10"/> -->
 
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
         args="0 0 0 0 0 0 base_link laser 10"/>
