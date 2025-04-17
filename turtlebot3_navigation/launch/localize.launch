@@ -1,49 +1,43 @@
+<?xml version="1.0"?>
 <launch>
-  <!-- Arguments -->
-  <arg name="map_file" default="$(find turtlebot3_navigation)/maps/rrc_lab.yaml"/>
-  <arg name="open_rviz" default="true"/>
+  <!-- <arg name="planner" default="voronoi"/> -->
+  <!-- <arg default="$(find wheelchair_mapping)/maps/map_gt.yaml" name="map_file" /> -->
+  <arg default="$../maps/rrc_lab.yaml" name="map_file" />
+  <!-- <arg default="/mnt/hd1/instance_slam/Datasets/wheelchair-azure-lidar-26-04-2024/map.yaml " name="map_file" /> -->
+  <!-- <arg default="$(find wheelchair_mapping)/maps/cleaned_map_edited.yaml " name="map_file" /> -->
+  <arg default="true" name="open_rviz" />
+  <arg default="wheelchair_diff/cmd_vel" name="cmd_vel_topic" />
+  <arg default="/odom" name="odom_topic" />
+  <!-- <arg default="$(find xacro)/xacro inorder '$(find wheelchair_description)/urdf/wheelchair_real_new.xacro'" name="urdf_file" /> -->
+  
+  <!-- <param command="$(arg urdf_file)" name="robot_description" /> -->
 
-  <!-- TurtleBot3 Bringup (Robot Setup) -->
-  <include file="$(find turtlebot3_navigation)/launch/bringup.launch" />
 
-  <!-- Map Server -->
-  <node pkg="map_server" name="map_server" type="map_server"
-        args="$(arg map_file)" output="screen"/>
+  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node-->
 
-  <!-- AMCL (Localization) -->
-  <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>
 
-  <!-- Static Transform Publishers for Missing Frames -->
-  <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_base_link"
-        args="0 0 0 0 0 0 map base_link 10"/> -->
+  <node args="$(arg map_file)" name="map_server" pkg="map_server" type="map_server" />
+  
 
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
-        args="0 0 0 0 0 0 base_link laser 10"/>
+ <include file="$(find wheelchair_nav_cameras)/launch/amcl.launch" />
+<!-- 
+  <node name="locomotor" output="screen" pkg="locomove_base" respawn="false" type="move_base">
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/costmap_common_params.yaml" ns="global_costmap" />
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/costmap_common_params.yaml" ns="local_costmap" />
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/local_costmap_params.yaml" />
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/global_costmap_params.yaml" />
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/move_base_params.yaml" />
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/dwb_local_planner_params_kangaroo.yaml" />
+    <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/global_planner_params_voronoi.yaml" />
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)" />
+    <remap from="odom" to="$(arg odom_topic)" />
+  </node>
+ -->
 
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_center_hubcap"
-        args="0 0 0 0 0 0 base_link center_hubcap 10"/>
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_center_wheel"
-        args="0 0 0 0 0 0 base_link center_wheel 10"/>
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_left_hubcap"
-        args="0 0 0 0 0 0 base_link p3dx_left_hubcap 10"/>
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_left_wheel"
-        args="0 0 0 0 0 0 base_link p3dx_left_wheel 10"/>
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_right_hubcap"
-        args="0 0 0 0 0 0 base_link p3dx_right_hubcap 10"/>
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_right_wheel"
-        args="0 0 0 0 0 0 base_link p3dx_right_wheel 10"/>
-
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_swivel"
-        args="0 0 0 0 0 0 base_link swivel 10"/>
-
-  <!-- RViz -->
-  <group if="$(arg open_rviz)"> 
-    <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
+  <group if="$(arg open_rviz)">
+    <node args="-d $(find wheelchair_nav_cameras)/rviz/wheelchair_navigation.rviz" name="rviz" pkg="rviz" required="true" type="rviz" />
   </group>
+
 </launch>
