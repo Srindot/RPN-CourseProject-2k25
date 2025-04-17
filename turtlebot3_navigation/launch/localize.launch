@@ -2,7 +2,7 @@
 <launch>
   <!-- <arg name="planner" default="voronoi"/> -->
   <!-- <arg default="$(find wheelchair_mapping)/maps/map_gt.yaml" name="map_file" /> -->
-  <arg default="$../maps/rrc_lab.yaml" name="map_file" />
+  <arg default="$(find turtlebot3_navigation)/maps/rrc_lab.yaml" name="map_file" />
   <!-- <arg default="/mnt/hd1/instance_slam/Datasets/wheelchair-azure-lidar-26-04-2024/map.yaml " name="map_file" /> -->
   <!-- <arg default="$(find wheelchair_mapping)/maps/cleaned_map_edited.yaml " name="map_file" /> -->
   <arg default="true" name="open_rviz" />
@@ -21,7 +21,7 @@
   <node args="$(arg map_file)" name="map_server" pkg="map_server" type="map_server" />
   
 
- <include file="$(find wheelchair_nav_cameras)/launch/amcl.launch" />
+ <include file="$(find turtlebot3_navigation)/launch/amcl.launch" />
 <!-- 
   <node name="locomotor" output="screen" pkg="locomove_base" respawn="false" type="move_base">
     <rosparam command="load" file="$(find wheelchair_nav_cameras)/param/costmap_common_params.yaml" ns="global_costmap" />
@@ -37,7 +37,7 @@
  -->
 
   <group if="$(arg open_rviz)">
-    <node args="-d $(find wheelchair_nav_cameras)/rviz/wheelchair_navigation.rviz" name="rviz" pkg="rviz" required="true" type="rviz" />
+    <node args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz" name="rviz" pkg="rviz" required="true" type="rviz" />
   </group>
 
 </launch>

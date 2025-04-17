@@ -1,6 +1,6 @@
 <launch>
   <!-- Arguments -->
-  <arg name="map_file" default="$(find turtlebot3_navigation)/maps/merged_map.yaml"/>
+  <arg name="map_file" default="$(find turtlebot3_navigation)/maps/rrc_lab.yaml"/>
   <arg name="open_rviz" default="true"/>
   <arg name="move_forward_only" default="false"/>
 
@@ -9,6 +9,34 @@
 
   <!-- Map server -->
   <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+        args="0 0 0 0 0 0 base_link laser 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_center_hubcap"
+        args="0 0 0 0 0 0 base_link center_hubcap 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_center_wheel"
+        args="0 0 0 0 0 0 base_link center_wheel 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_left_hubcap"
+        args="0 0 0 0 0 0 base_link p3dx_left_hubcap 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_left_wheel"
+        args="0 0 0 0 0 0 base_link p3dx_left_wheel 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_right_hubcap"
+        args="0 0 0 0 0 0 base_link p3dx_right_hubcap 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_p3dx_right_wheel"
+        args="0 0 0 0 0 0 base_link p3dx_right_wheel 10"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_swivel"
+        args="0 0 0 0 0 0 base_link swivel 10"/>
+
+  
 
   <!-- AMCL -->
   <include file="$(find turtlebot3_navigation)/launch/amcl.launch"/>
