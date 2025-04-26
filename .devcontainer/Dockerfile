@@ -21,7 +21,7 @@ RUN sudo apt update && \
 
 # installing the Turtle Bot gazebo for navigation 
 # RUN sudo apt install ros-foxy-turtlebot3-gazebo
+# install ros2 -> ros1 bridge 
+RUN sudo apt install ros-foxy-ros1-bridge
 
-RUN mkdir -p /home/container_user/ros2_ws/src 
-RUN cd /home/container_user/ros2_ws/src && git clone https://github.com/ros2/ros1_bridge.git
 CMD ["/bin/bash"]

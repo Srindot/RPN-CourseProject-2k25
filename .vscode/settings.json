@@ -1,5 +1,5 @@
 {
-    "cmake.sourceDirectory": "/home/tarun/P3DX/depthimage_to_laserscan",
+    "cmake.sourceDirectory": "/home/container_user/catkin_ws/src/depthimage_to_laserscan",
     "python.autoComplete.extraPaths": [
         "/home/container_user/catkin_ws/devel/lib/python3/dist-packages",
         "/opt/ros/noetic/lib/python3/dist-packages"
