@@ -15,5 +15,13 @@ RUN sudo apt update -y && sudo apt upgrade -y
 # Install ROS2 Foxy and necessary tools
 RUN sudo apt install -y ros-foxy-desktop python3-argcomplete ros-dev-tools
 
+# Installing Navigation2 (Nav2) for foxy 
+RUN sudo apt update && \
+    sudo apt install -y ros-foxy-navigation2 ros-foxy-nav2-bringup
 
+# installing the Turtle Bot gazebo for navigation 
+# RUN sudo apt install ros-foxy-turtlebot3-gazebo
+
+RUN mkdir -p /home/container_user/ros2_ws/src 
+RUN cd /home/container_user/ros2_ws/src && git clone https://github.com/ros2/ros1_bridge.git
 CMD ["/bin/bash"]
