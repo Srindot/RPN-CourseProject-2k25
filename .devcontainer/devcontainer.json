@@ -1,6 +1,9 @@
 {
     "name": "RPN Course Project",
-    "image": "ghcr.io/rtarun1/p3dx_base:v1.0",
+    "build": {
+        "dockerfile":"Dockerfile",
+        "context":"."    
+    },
     "privileged": true,
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/container_user/catkin_ws/src,type=bind",
     "workspaceFolder": "/home/container_user/catkin_ws/src",
