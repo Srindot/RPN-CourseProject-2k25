@@ -12,7 +12,7 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/r
 # Update & upgrade packages
 RUN sudo apt update -y && sudo apt upgrade -y
 
-# Install ROS2 Foxy and necessary tools
+# Install ROS2 Foxy and necessary toolsz
 RUN sudo apt install -y ros-foxy-desktop python3-argcomplete ros-dev-tools
 
 # Installing Navigation2 (Nav2) for foxy 

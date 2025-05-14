@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "RosCore",
+            "type": "shell",
+            "command": "roscore",
+            "presentation": {
+                "panel": "dedicated",
+                "group": "terminals"
+            }
+        },
+        {
+            "label": "rosrun rosaria RosAria",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "cd ~/catkin_ws/ && source devel/setup.bash && sudo chmod +777 /dev/ttyUSB0 && rosrun rosaria RosAria"],
+            "presentation": {
+                "panel": "dedicated",
+                "group": "terminals"
+            }
+        },
+        {
+            "label": "roslaunch rplidar_ros rplidar_s2.launch",
+            "type": "shell",
+            "command": "cd ~/catkin_ws/ && source devel/setup.bash && sudo chmod +777 /dev/ttyUSB1 && roslaunch rplidar_ros rplidar_s2.launch ",
+            "presentation": {
+                "panel": "dedicated",
+                "group": "terminals"
+            }
+        },
+        {
+            "label": "lanch navigation ",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "cd ~/catkin_ws/ && source devel/setup.bash && roslaunch turtlebot3_navigation turtlebot3_navigation.launch "],
+            "presentation": {
+                "panel": "dedicated",
+                "group": "terminals"
+            }
+        },
+        {
+            "label": "Session 5: Offboard Control",
+            "type": "shell",
+            "command": "bash",
+            "args": ["-c", "cd ~/ws_offboard_control/src && cd .. && source /opt/ros/humble/setup.bash && source devel/local_setup.bash && python3 ~/workspace/offboard_control.py"],
+            "presentation": {
+                "panel": "dedicated",
+                "group": "terminals"
+            }
+        }
+    ]
+}
